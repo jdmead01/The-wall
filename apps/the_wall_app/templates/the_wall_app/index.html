@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+{% load static %}
+<link rel="stylesheet" href="{% static 'the_wall_app/css/style.css' %}">
+<title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Login / Register</h1>
+        </div>
+        <div class="main">
+            <div class="col">
+                <form action="/register" method="post">
+                    {% csrf_token %}
+                    <div class="registration">Registration</div>
+                    <div class="col_2">
+                        <div class="first_name">First Name</div>
+                        <div class="last_name">Last Name</div>
+                        <div class="email">Email</div>
+                        <!-- <div class="birthday">Birthday</div> -->
+                        <div class="password">Password</div>
+                        <div class="confirm_password">Confirm PW</div>
+                    </div>
+                    <div class="col_3">
+
+                        <div class="f_name_input">
+                            <input type="text" name="first_name" id="f_name_input">
+                        </div>
+
+                        <div class="l_name_input">
+                            <input type="text" name="last_name" id="l_name_input">
+                        </div>
+
+                        <div class="email_input">
+                            <input type="text" name="email">
+                        </div>
+
+                        <!-- <div class="birthday_input">
+                            <input type="date" name="birthdate" placeholder="2000-01-01">
+                        </div> -->
+
+                        <div class="password_input">
+                            <input type="password" name="password">
+                        </div>
+
+                        <div class="conf_password_input">
+                            <input type="password" name="conf_password">
+                        </div>
+                    </div>
+                    <div class="button">
+                        <button class="btn" type="submit">Register</button>
+                    </div>
+                    <div class="messages">
+                        {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                                {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+
+            <div class="col">
+                <form action="/login" method="post">
+                    {% csrf_token %}
+                        <div class="login">Login</div>
+                        <div class="col_4">
+                            <div class="email_li">Email</div>
+                            <div class="password_li">Password</div>
+                        </div>
+                        <div class="col_5">
+                            <div class="email_input_li">
+                                <input type="text" class="input_email" name="email">
+                            </div>
+                            <div class="password_input_li">
+                                <input type="password" class="input_password" name="password">
+                            </div>
+                        </div>
+                        <div class="login_btn">
+                            <button class="btn_li">Login</button>
+                        </div>
+                </form>
+            </div>
+        </div>
+        <div class="footer">
+            <h6>Coding Dojo 2019</h6>
+        </div>
+    </div>
+</body>
+</html>

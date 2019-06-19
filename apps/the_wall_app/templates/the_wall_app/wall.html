@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'the_wall_app/css/wall.css' %}">
+    <title>Coding Dojo Wall</title>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="banner">Coding Dojo Wall</div>
+            <div class="welcome">Welcome  Michael</div>
+            <div class="logoff"><a href="/logoff">Log Off</a></div>
+        </div>
+
+        <div class="main">
+            <div class="post">Post a message</div>
+            <form action="/?" class="msg_post" method="post">
+                <div class="text_area">
+                    <textarea name="message" id="" cols="30" rows="10" class="input"></textarea>
+                </div>
+                <div class="post_msg">
+                    <button class="button" type="submit">Post a message</button>
+                </div>
+            </form>
+            <div class="messages">
+                <!-- messages goes here -->
+                <div class="user_date">Michael Choi - <span>January 23rd 2013</span></div>
+                <div class="user_msg">This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message.</div>
+                <!-- messages goes here -->
+            </div>
+        </div>
+
+        <div class="footer">
+            <h6>Coding Dojo 2019</h6>
+        </div>
+
+    </div>
+    
+</body>
+</html>

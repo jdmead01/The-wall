@@ -1,0 +1,150 @@
+* {
+    border: solid 1px red;
+    margin: 0px;
+    padding: 0px;
+}
+
+.container {
+    /* min-width: 300px;
+    max-width: 600px; */
+
+    margin: 0 auto;
+}
+
+h1, h6 {
+    text-align: center;
+    margin: 10px 0px;
+}
+
+.main {
+    /* text-align: center; */
+    /* background-image: url("localhost.png"); */
+    margin: 0px auto;
+    width: 970px;
+    /* height: 511px; */
+    border: 6px solid black;
+}
+.registration{
+    font-size: 46px;
+    margin-left: 117px;
+    margin-top: 31px;
+}
+
+.col{
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+}
+.col_2{
+    display: inline-block;
+    margin: 38px 0px 0px 61px;
+    font-size: 27px;
+}
+
+.first_name{
+    margin-top: 0px;
+}
+.f_name_input{
+    /* margin-bottom: 157px;
+    margin-left: 26px; */
+}
+.last_name{
+    margin-top: 27px;
+}
+.l_name_input{
+    margin-top: 25px;
+}
+.email{
+    margin-top: 30px;
+}
+.email_input{
+    margin-top:27px;
+}
+.birthday{
+    margin-top: 30px;
+}
+.birthday_input{
+    margin-top: 19px;
+    font-size: 5px;
+}
+.password{
+    margin-top: 26px;
+}
+.password_input{
+    margin-top: 23px;
+}
+.confirm_password{
+    margin-top: 32px;
+}
+.conf_password_input{
+    margin-top: 28px;
+}
+.col_3{
+    display: inline-block;
+    margin-left: 11px;
+    vertical-align: top;
+    text-align: left;
+    margin-top: 41px;
+}
+input{
+    font-size: 21px;
+    padding: 2px 0px;
+    width: 157px;
+    border: 3px solid black;
+}
+.btn {
+    /* margin-top: 40px; */
+    font-size: 17px;
+    color: white;
+    padding: 4px 8px;
+    border: solid 2px black;
+    box-shadow: 4px 4px 2px black;
+    background-color: #2c78e4;
+}
+.button{
+    margin-left: 169px;
+    margin-top: 41px;
+    margin-bottom: 20px;
+}
+.col_4{
+    display: inline-block;
+    font-size: 27px;
+    margin: 38px 0px 0px 138px;
+    width: 100px;
+}
+
+.col_5{
+    display: inline-block;
+    font-size: 21px;
+    margin: 41px 0px 0px 47px;
+    vertical-align: top;
+}
+.login{
+    margin-left: 246px;
+    margin-top: 32px;
+    font-size: 45px;
+}
+.password_li{
+    margin-top: 30px;
+}
+.password_input_li{
+    margin-top: 25px;
+}
+.login_btn{
+    margin: 35px 0px 0px 251px;
+}
+.btn_li{
+    font-size: 17px;
+    color: white;
+    padding: 4px 8px;
+    border: solid 2px black;
+    box-shadow: 4px 4px 2px black;
+    background-color: #2c78e4;
+}
+
+img{
+    width: 25%; 
+    height: 25%; 
+    object-fit: contain;
+    margin: 0px auto;
+}

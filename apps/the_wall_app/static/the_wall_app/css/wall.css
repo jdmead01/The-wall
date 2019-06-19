@@ -1,0 +1,99 @@
+* {
+    border: solid 1px red;
+    margin: 0px;
+    padding: 0px;
+    font-family: Verdana,Geneva,sans-serif;
+}
+
+.container {
+    width: 970px;
+    height: 800px;
+    margin: 0 auto;
+    background-image: url('index.png');
+    border: solid 2px black;
+}
+
+.header {
+    height: 55px;
+    border-bottom: solid 2px black
+}
+
+.banner {
+    display: inline-block;
+    font-size: 19px;
+    font-weight: bold;
+    margin: 20px 0px 0px 14px;
+    padding-top: 0px;
+    vertical-align: top;
+}
+
+.welcome {
+    display: inline-block;
+    font-size: 16px;
+    margin: 20px 0px 0px 506px;
+    padding-top: 0px;
+    vertical-align: top;
+}
+
+.logoff {
+    display: inline-block;
+    font-size: 14px;
+    margin: 0px 0px 0px 55px;
+    padding-top: 22px;
+    vertical-align: top;
+}
+
+h6 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.main {
+    vertical-align: top;
+    text-align: left;
+    height: 702px;
+    border-bottom: solid 2px black;
+    margin: 40px 0px 0px 0px;
+    padding-left: 71px
+}
+
+.post {
+    font-size: 20px;
+}
+
+.text_area {
+    margin: 6px 0px 0px 8px;
+}
+
+.input {
+    width: 726px;
+    height: 64px;
+    border: solid 2px black;
+    font-size: 15.4px;
+    padding: 5px 5px;
+}
+
+.post_msg {
+    margin: 7px 0px 0px 594px;
+}
+
+.button {
+    font-size: 17px;
+    color: white;
+    padding: 4px 8px;
+    border: solid 2px black;
+    box-shadow: 4px 4px 2px black;
+    background-color: #2c78e4;
+}
+
+.messages {
+    width: 754px;
+    margin-top: 18px;
+    font-size: 15.4px;
+    line-height: 16pt;
+    /* border: solid 1px red; */
+}
+
+.user_msg {
+    margin: 10px 0px 0px 22px;
+}
