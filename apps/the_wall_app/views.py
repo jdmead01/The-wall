@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
-from .models import User, UserManager, BaseModel, Message, Comment #importing class to avoid user not defined (name-error)
+from .models import User, Message, Comment #importing class to avoid user not defined (name-error)
 from django.contrib import messages
 
 # Create your views here.
@@ -10,14 +10,20 @@ def index(request):
 
 def login(request):
     # return HttpResponse("This is the equivalent of @app.route('/')!")
-    context = {}
+    # context = {}
+    request.session['user_id'] = User.objects.get(email=request.POST['email']).id
+
     return redirect('/wall')
 
 
-def delete(request, id):
-    comment = Comment.objects.get(id=comment_id).delete()
+def delete_comment(request, comment_id):
+    Comment.objects.get(id=comment_id).delete()
     return redirect('/wall')
 
+def delete_message(request, message_id):
+    Message.objects.get(id=message_id).delete()
+    return redirect('/wall')
+    
 def wall(request):
     context = {
         'users': User.objects.all(), 
@@ -30,7 +36,25 @@ def wall(request):
 
 # what the form submission is creating within the DB - fields from the Models.py 
 def register(request):
-    # make user as an object
+    errors = User.objects.register_validator(request.POST) # check if the errors dictionary has anything in it
+    if len(errors) > 0:
+        # if the errors dictionary contains anything, loop through each key-value pair and make a flash message
+        for key, value in errors.items():
+            messages.error(request, value)
+        # redirect the user back to the form to fix the errors
+        return redirect('/')
+    else:
+        # if the errors object is empty, that means there were no errors!
+        # retrieve the blog to be updated, make the changes, and save
+        # user = User.objects.get(id = id)
+        user.first_name = request.POST['first_name']
+        user.last_name = request.POST['last_name']
+        user.last_name = request.POST['last_name']
+        user.email = rwquest.POST['email']
+        blog.save()
+        messages.success(request, "Blog successfully updated")
+        # redirect to a success route
+        return redirect('/')
     User.objects.create(first_name=request.POST['first_name'],last_name=request.POST['last_name'],email=request.POST['email'],password=request.POST['password'])
     # pass something into session once user is added to the DB so it is saved globally to the site. 
     request.session['user_id'] = User.objects.last().id

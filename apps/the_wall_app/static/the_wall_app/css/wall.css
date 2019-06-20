@@ -10,7 +10,11 @@
     height: auto;
     margin: 0 auto;
     /* background-image: url('index.png'); */
-    border: solid 2px black;
+    border: 20px double black;
+    background: #3ACE2D;
+    background: -moz-linear-gradient(-45deg, #3ACE2D 0%, #4FA485 67%, #96B0C5 100%);
+    background: -webkit-linear-gradient(-45deg, #3ACE2D 0%, #4FA485 67%, #96B0C5 100%);
+    background: linear-gradient(135deg, #3ACE2D 0%, #4FA485 67%, #96B0C5 100%);
 }
 
 .header {
@@ -52,7 +56,7 @@ h6 {
     /* background-image: url("index.png"); */
     vertical-align: top;
     text-align: left;
-    height: 800px;
+    height: auto;
     border-bottom: solid 2px black;
     margin: 40px 0px 0px 0px;
     padding-left: 71px
@@ -67,7 +71,7 @@ h6 {
 }
 
 .input {
-    width: 726px;
+    width: 688px;    
     height: 64px;
     border: solid 2px black;
     font-size: 15.4px;
@@ -104,14 +108,23 @@ h6 {
     box-shadow: 4px 4px 2px black;
     background-color: #469B30;
     display: inline-block;
+    margin-right: 22px;
+    margin-bottom: 10px;
+    border-top-width: 2px;
+    margin-top: 0px;;
 }
 
 .messages {
+    border: 5px solid black;
     width: 754px;
-    margin-top: 18px;
-    font-size: 15.4px;
-    line-height: 16pt;
+    margin-top: 0px auto;
+    font-size: 13.4px;
+    line-height: 25pt;
+    background: #DDDBCC;
     /* border: solid 1px red; */
+}
+p{
+    margin-left: 35px;
 }
 
 .user_msg {
@@ -123,4 +136,19 @@ h6 {
 
 #del_comment_btn{
     display: inline-block;
+}
+
+.user_date{
+    font-family: Georgia, serif;
+    font-size: 19px;
+    letter-spacing: 0.8px;
+    word-spacing: 1px;
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    margin-top: 10px;
+    margin-left: 10px;
 }

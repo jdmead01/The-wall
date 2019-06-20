@@ -41,7 +41,7 @@
                     {% for comment in message.comments.all %}
                         <p>{{comment.author.first_name}} {{comment.author.last_name}}</p>
                         <p>------{{comment.comment}}</p>
-                        <a href="/delete/{{ comment.id }}">Delete</a>
+                        <a href="/delete/comment/{{ comment.id }}">Delete Comment</a>
                     {% endfor %}
                     <div class="post">Comments</div>
                         <form action="/post_comment" class="msg_post" method="post">
@@ -52,7 +52,7 @@
                     </div>
                     <div class="post_msg">
                         <button class="button" type="submit">Post a Comment</button>
-                        <button type="submit" href="/delete/{{ comment.id }}">Delete</button>
+                        <a href="/delete/message/{{ message.id }}">Delete Message</a>
                     </div>
 
                 </form>

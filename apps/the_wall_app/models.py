@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from django.db import models
 from datetime import date, datetime
 from django.contrib import messages
@@ -6,54 +7,26 @@ import bcrypt
 
 # Create your models here.
 
-class BaseModel(models.Model):
-    created_at = models.DateField(auto_now_add=True)
-    updated_at = models.DateField(auto_now=True)
+# class BaseModel(models.Model):
+#     created_at = models.DateField(auto_now_add=True)
+#     updated_at = models.DateField(auto_now=True)
 
 class UserManager(models.Manager):
-    def f_name_validator(self, postData):
-        errors = {}
-        if len(postData['first_name']) < 2:
-            errors['first_name'] = f"{postData['first_name']} is not at least 2 characters."
-        if errors:
-            return errors
-    def l_name_validator(self, postData):
-        errors = {}
-        if len(postData['last_name']) < 2:
-            errors['last_name'] = f"{postData['last_name']} is not at least 2 characters."
-        if errors:
-            return errors
-    def password_validator(self, postData):
-        errors = {}
-        if len(postData['password']) < 8:
-            errors['password'] = "Please enter a password that is at least 8 characters."
-        if errors:
-            return errors
-    def email_validator(self, postData):
+    def register_validator(self, postData):
         errors = {}
         pattern = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
+        db_emails = User.objects.filter(email=postData['email'])
+        if len(postData['first_name']) < 2:
+            errors['first_name'] = f"{postData['first_name']} is not at least 2 characters."
+        if len(postData['last_name']) < 2:
+            errors['last_name'] = f"{postData['last_name']} is not at least 2 characters."
+        if len(postData['password']) < 8:
+            errors['password'] = "Please enter a password that is at least 8 characters."
         if not re.fullmatch(pattern, postData['email']):
             errors['email'] = "Please enter a valid email address."
-        db_emails = User.objects.filter(email=postData['email'])
         if len(db_emails) > 0:
-            errors['unique_email'] = "That email address is already in use."
-        if errors:
-            return errors
-    
-    def validate_registration(self, postData):
-        errors = {}
-        if self.f_name_validator(postData):
-            errors.update(self.f_name_validator(postData))
-        if self.l_name_validator(postData):
-            errors.update(self.l_name_validator(postData))
-        if self.email_validator(postData):
-            errors.update(self.email_validator(postData))
-        if self.password_validator(postData):
-            errors.update(self.password_validator(postData))
-        # if self.birthdate_validator(postData):
-        #     errors.update(self.birthdate_validator(postData))
+            errors['unique_email'] = "That email address is already in use." 
         return errors
-
     # def birthdate_validator(self, postData):
     #     errors = {}
     #     bday = postData['birthdate']
@@ -64,7 +37,6 @@ class UserManager(models.Manager):
     #     if errors:
     #         print(errors)
     #         return errors
-    
     def __repr__(self):
         return f"[User Object: Name({self.first_name} {self.last_name}) id({self.id})]"
     def bcrypt_password(self):
@@ -81,6 +53,8 @@ class User(models.Model):
     password = models.CharField(max_length=45)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = UserManager()
+
 
     
 class Message(models.Model):
@@ -96,11 +70,3 @@ class Comment(models.Model):
     author = models.ForeignKey(User, related_name="comments")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
-class User(BaseModel):
-    first_name = models.CharField(max_length=45)
-    last_name = models.CharField(max_length=45)
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=32)
-    # birthdate = models.DateField()
-    objects = UserManager()
