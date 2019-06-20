@@ -14,24 +14,50 @@
 
         <div class="header">
             <div class="banner">Coding Dojo Wall</div>
-            <div class="welcome">Welcome  Michael</div>
+            <!-- current_user from wall views.py contect key value pair referencing the field within the objects/class database -->
+            <div class="welcome"><p>Welcome {{current_user.first_name}}!</p></div> 
             <div class="logoff"><a href="/logoff">Log Off</a></div>
         </div>
 
         <div class="main">
             <div class="post">Post a message</div>
-            <form action="/?" class="msg_post" method="post">
+            <form action="/post_message" class="msg_post" method="post">
+                {% csrf_token %}
                 <div class="text_area">
                     <textarea name="message" id="" cols="30" rows="10" class="input"></textarea>
                 </div>
                 <div class="post_msg">
-                    <button class="button" type="submit">Post a message</button>
+                    <button class="button" type="submit" id="post_msg">Post a message</button>
                 </div>
             </form>
             <div class="messages">
                 <!-- messages goes here -->
-                <div class="user_date">Michael Choi - <span>January 23rd 2013</span></div>
-                <div class="user_msg">This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message. This is my message.</div>
+                <div class="user_date">{{current_user.first_name}} - <span>January 23rd 2013</span></div>
+                <!-- Logic to get all the messages from the DB to the page -->
+                <div class="user_msg">
+                    {% for message in messages %}
+                    <p>{{message.message}}</p>
+                    <!-- # looping through all the comments one at a time  -->
+                    {% for comment in message.comments.all %}
+                        <p>{{comment.author.first_name}} {{comment.author.last_name}}</p>
+                        <p>------{{comment.comment}}</p>
+                        <a href="/delete/{{ comment.id }}">Delete</a>
+                    {% endfor %}
+                    <div class="post">Comments</div>
+                        <form action="/post_comment" class="msg_post" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="current_message" value="{{message.id}}">
+                    <div class="text_area">
+                        <textarea name="comment" id="" cols="30" rows="10" class="input"></textarea>
+                    </div>
+                    <div class="post_msg">
+                        <button class="button" type="submit">Post a Comment</button>
+                        <button type="submit" href="/delete/{{ comment.id }}">Delete</button>
+                    </div>
+
+                </form>
+                {% endfor %}
+                </div>
                 <!-- messages goes here -->
             </div>
         </div>

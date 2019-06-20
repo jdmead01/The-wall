@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 {% load static %}
 <link rel="stylesheet" href="{% static 'the_wall_app/css/style.css' %}">
-<title>Document</title>
+<title>Login and Register</title>
 </head>
 <body>
     <div class="container">
@@ -59,7 +59,7 @@
                         {% if messages %}
                         <ul class="messages">
                             {% for message in messages %}
-                            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
                                 {% endfor %}
                         </ul>
                         {% endif %}
